@@ -1,0 +1,7 @@
+[role_bastion]
+master-1.10.61.1.11.xip.io
+
+[role_bastion:vars]
+ansible_user=root
+
+yum_packages_bastion=['bash-completion', 'libselinux-python', 'epel-release', 'pyOpenSSL', 'python3-pip', 'sshpass', 'python-gssapi', 'python-crypto.x86_64']

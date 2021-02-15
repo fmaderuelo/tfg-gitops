@@ -1,0 +1,36 @@
+---
+- name: Create software folder
+  file:
+    path: /root/kubespray
+    state: directory
+    mode: 0755
+
+- name: Ensure required packages are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ yum_packages_bastion }}"
+
+- name: Download kubespray project
+  git:
+    repo: 'https://github.com/kubernetes-sigs/kubespray'
+    dest: /root/kubespray
+    version: release-2.15
+    clone: yes
+    update: no
+
+- name: Copy sample inventory to mycluster inventory
+  copy:
+    src: /root/kubespray/inventory/sample/
+    dest: /root/kubespray/inventory/mycluster/
+
+- name: Copy inventory files to KubeSpray Project
+  template:
+    src: ../../../inventories/inventory.ini.j2
+    dest: /root/kubespray/inventory/mycluster/inventory.ini
+
+- name: Modify installation for overlay2
+  lineinfile:
+    path: /root/kubespray/inventory/mycluster/group_vars/all/docker.yml
+    regexp: '^# docker_storage_options: -s overlay2'
+    line: 'docker_storage_options: -s overlay2'

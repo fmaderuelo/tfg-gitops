@@ -1,0 +1,30 @@
+[all]
+master-1.10.61.1.11.xip.io ansible_host=10.61.1.11 ip=10.61.1.11 etcd_member_name=etcd1
+master-2.10.61.1.12.xip.io ansible_host=10.61.1.12 ip=10.61.1.12 etcd_member_name=etcd2
+worker-1.10.61.1.21.xip.io ansible_host=10.61.1.21 ip=10.61.1.21 etcd_member_name=etcd3
+worker-2.10.61.1.22.xip.io ansible_host=10.61.1.22 ip=10.61.1.22
+worker-3.10.61.1.23.xip.io ansible_host=10.61.1.23 ip=10.61.1.23
+
+[all:vars]
+yum_packages=['bash-completion', 'kubectl']
+
+[kube-master]
+master-1.10.61.1.11.xip.io
+master-2.10.61.1.12.xip.io
+
+[etcd]
+master-1.10.61.1.11.xip.io
+master-2.10.61.1.12.xip.io
+worker-1.10.61.1.21.xip.io
+
+[kube-node]
+worker-1.10.61.1.21.xip.io
+worker-2.10.61.1.22.xip.io
+worker-3.10.61.1.23.xip.io
+
+[calico-rr]
+
+[k8s-cluster:children]
+kube-master
+kube-node
+calico-rr
