@@ -1,7 +1,6 @@
 ---
 - name: Install EPEL repo.
   shell: yum --enablerepo=extras install epel-release -y
-  warn: false
 
 - name: Ensure required packages are installed
   package:
