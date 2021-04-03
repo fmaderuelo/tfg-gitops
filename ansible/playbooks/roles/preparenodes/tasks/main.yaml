@@ -1,6 +1,7 @@
 ---
 - name: Install EPEL repo.
   shell: yum --enablerepo=extras install epel-release -y
+  warn: false
 
 - name: Ensure required packages are installed
   package:
@@ -23,7 +24,7 @@
   pause:
     seconds: 10
 
-- name: Open up firewalld ports
+- name: Open firewalld ports
   firewalld:
     permanent: yes
     immediate: yes
@@ -61,3 +62,17 @@
     permanent: yes
     immediate: yes
     zone: public
+
+- name: Modify nodes /etc/resolv.conf
+  ansible.builtin.lineinfile:
+    path: /etc/resolv.conf
+    regexp: '^search 10\.61\.*'
+    line: 'search cluster.local'
+    backup: yes
+
+- name: Modify nodes NetworkManager DNS configuration
+  ansible.builtin.blockinfile:
+    path: /etc/NetworkManager/NetworkManager.conf
+    insertafter: '^\[main\]'
+    block: 'dns=none'
+    backup: yes

@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
         'modifyvm', :id,
         '--groups', '/TFG-GitOps/masters'
       ]
-      ### Add sdb disk for Docker ###
+      ### Añadir disco sdb para Docker ###
       unless File.exists?("./volumes/master-2-docker/sdb.vdi")
         v.customize [
           'createmedium', 'disk',
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
           'modifyvm', :id,
           '--groups', '/TFG-GitOps/workers'
         ]
-        ### Add sdb disk for Docker ###
+        ### Añadir disco sdb para Docker ###
         unless File.exists?("./volumes/worker-#{i}-docker/sdb.vdi")
           v.customize [
             'createmedium', 'disk',
@@ -87,9 +87,12 @@ Vagrant.configure("2") do |config|
       bastion.vm.provision "file", source: "./bastion/hostnames.txt", destination: "/tmp/hostnames.txt"
       bastion.vm.provision "file", source: "./bastion/kubernetes.repo", destination: "/tmp/kubernetes.repo"
       bastion.vm.provision "file", source: "./bastion/postinstall.sh", destination: "/tmp/postinstall.sh"
+      bastion.vm.provision "file", source: "./extras/argocd-ingress.yaml", destination: "/tmp/argocd-ingress.yaml"
+      bastion.vm.provision "file", source: "./extras/dashboard-ingress.yaml", destination: "/tmp/dashboard-ingress.yaml"
+      bastion.vm.provision "file", source: "./extras/k8s-dashboard.yaml", destination: "/tmp/k8s-dashboard.yaml"
       bastion.vm.provision "file", source: "./extras/metallb-config.yaml", destination: "/tmp/metallb-config.yaml"
-      bastion.vm.provision "file", source: "./extras/nginx-svc.yaml", destination: "/tmp/nginx-svc.yaml"
       bastion.vm.provision "file", source: "./extras/metallb-install.sh", destination: "/tmp/metallb-install.sh"
+      bastion.vm.provision "file", source: "./extras/nginx-svc.yaml", destination: "/tmp/nginx-svc.yaml"
       bastion.vm.provision "file", source: "./ansible", destination: "/tmp/"
       bastion.vm.provision "shell", path: "./bastion/configbastion.sh"
       bastion.vm.synced_folder '.', '/vagrant', disabled: true
@@ -101,7 +104,7 @@ Vagrant.configure("2") do |config|
           'modifyvm', :id,
           '--groups', '/TFG-GitOps/masters'
         ]
-        ### Add sdb disk for Docker ###
+        ### Añadir disco sdb para Docker ###
         unless File.exists?("./volumes/master-1-docker/sdb.vdi")
           v.customize [
             'createmedium', 'disk',
@@ -120,5 +123,4 @@ Vagrant.configure("2") do |config|
         ]
       end
     end
-
 end

@@ -34,3 +34,22 @@
     path: /root/kubespray/inventory/mycluster/group_vars/all/docker.yml
     regexp: '^# docker_storage_options: -s overlay2'
     line: 'docker_storage_options: -s overlay2'
+
+- name: Starting firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+    masked: no
+    daemon_reload: yes
+
+- name: Open up firewalld services
+  firewalld:
+    permanent: yes
+    immediate: yes
+    state: enabled
+    service: "{{ item }}"
+  with_items:
+      - nfs
+      - http
+      - https
