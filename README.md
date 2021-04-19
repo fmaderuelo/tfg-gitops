@@ -6,7 +6,7 @@
 * **[Vagrant](https://www.vagrantup.com/downloads)** - Probado con la versión 2.2.14
 * **[vagrant-hostmanager](https://github.com/devopsgroup-io/vagrant-hostmanager)** plugin - Probado con la versión 1.8.9
 ```
-    vagrant plugin install vagrant-hostmanager
+vagrant plugin install vagrant-hostmanager
 ```
 ## Diagrama
 
