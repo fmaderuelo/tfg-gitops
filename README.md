@@ -17,19 +17,13 @@ Se despliegan en total 5 máquinas virtuales (nodos): 2 master y 3 worker, y se 
 
 El detalle de la configuración de las MVs que se crearán es:
 
-* (2x) masters
-    * vcpu: 2
-    * memory: 4 Gb
-    * disks:
-        * sda: 40 Gb
-        * sdb: 20 Gb
-
-* (3x) workers
-    * vcpu: 2
-    * memory: 3 Gb
-    * disks:
-        * sda: 40 Gb
-        * sdb: 20 Gb
+| |masters|workers
+-----|-----|-----
+nº de nodos|2|3
+vcpu (por nodo)|2|2
+memoria (por nodo)|4 Gb| 3 Gb
+disco sda|40 Gb|40 Gb
+disco sdb|20 Gb|20 Gb
 
 ## INSTALACIÓN
 ### Clonar el proyecto y crear la infraestructura
