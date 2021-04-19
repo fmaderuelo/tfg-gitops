@@ -1,5 +1,5 @@
 # Metodología GitOps para despliegue de aplicaciones basadas en microservicios
->Código del TFG de Francisco Maderuelo, perteneciente a los estudios de **Grado en Tecnologías para la Sociedad de la Información** de la **ETSISI** de la **UPM**.
+>Código del TFG de Francisco Maderuelo, perteneciente a los estudios de **Grado en Tecnologías para la Sociedad de la Información** de la **ETSISI - UPM**.
 
 ## Requisitos
 * **[VirtualBox](https://www.virtualbox.org/wiki/Downloads)** - Probado con la versión 6.1.18
@@ -119,7 +119,9 @@ Configurar *kubectl* en el host para que use el archivo de configuración y crea
 export KUBECONFIG=config
 kubectl proxy
 ```
-Mientras el comando `kubectl proxy` se está ejecutando, el proxy está activo (se puede parar con CTRL + C). Con el proxy activo se puede acceder al dashboard desde un navegador del host en la dirección: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+Mientras el comando `kubectl proxy` se está ejecutando, el proxy está activo (se puede parar con CTRL + C). Con el proxy activo se puede acceder al dashboard desde un navegador del host en la dirección:
+
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
 
 Se puede utilizar el *ingress-controller* instalado para dar acceso al dashboard así:
 ```
