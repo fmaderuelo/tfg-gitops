@@ -129,7 +129,7 @@ Si todo ha ido bien, se podrá acceder al dashboard en la siguiente dirección:
 
 https://dashboard.10.61.1.30.xip.io
 
-Y después de introducir el tocken se verá algo parecido a esto:
+Y después de introducir el token se verá algo parecido a esto:
 
 ![Dashboard](/images/dash-ingress.png)
 ### Instalar Argo CD
