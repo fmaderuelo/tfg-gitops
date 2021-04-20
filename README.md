@@ -50,7 +50,7 @@ ansible-playbook -i /root/kubespray/inventory/mycluster/inventory.ini --become -
 ```
 Si todo ha ido bien el resultado será parecido a esto:
 
-![Resultado](/images/k8s-installation.png)
+![Instalacion](/images/k8s-installation.png)
 
 ### Dar acceso al clúster mediante *kubectl*
 ```
@@ -61,7 +61,7 @@ k get nodes
 ```
 La ejecución del último comando debería mostrar algo similar a lo siguiente:
 
-![Resultado](/images/k8s-nodes.png)
+![Nodos](/images/k8s-nodes.png)
 
 ### Instalar y configurar *MetalLB*
 ```
@@ -121,10 +121,17 @@ Se puede utilizar el *ingress-controller* instalado para dar acceso al dashboard
 ```
 kubectl apply -f /opt/dashboard-ingress.yaml
 ```
-Y comprobar que todo ha ido bien:
+Y comprobar que se ha creado correctamente:
 ```
 kubectl get ingresses.networking.k8s.io -n kubernetes-dashboard
 ```
+Si todo ha ido bien, se podrá acceder al dashboard en la siguiente dirección:
+
+https://dashboard.10.61.1.30.xip.io
+
+Y después de introducir el tocken se verá algo parecido a esto:
+
+![Dashboard](/images/dash-ingress.png)
 ### Instalar Argo CD
 ```
 kubectl create namespace argocd
