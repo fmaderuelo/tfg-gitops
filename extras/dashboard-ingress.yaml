@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: dashboard.10.61.1.30.xip.io
+  - host: dashboard.10.61.1.30.nip.io
     http:
       paths:
       - path: /

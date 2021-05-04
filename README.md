@@ -127,7 +127,7 @@ kubectl get ingresses.networking.k8s.io -n kubernetes-dashboard
 ```
 Si todo ha ido bien, se podrá acceder al dashboard en la siguiente dirección:
 
-https://dashboard.10.61.1.30.xip.io
+https://dashboard.10.61.1.30.nip.io
 
 Y después de introducir el token se verá algo parecido a esto:
 
@@ -151,4 +151,4 @@ kubectl apply -f /opt/argocd-ingress.yaml
 ```
 Una vez creado se podrá acceder desde el navegador del host en la dirección:
 
-http://argocd.10.61.1.30.xip.io
+http://argocd.10.61.1.30.nip.io

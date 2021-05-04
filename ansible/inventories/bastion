@@ -1,5 +1,5 @@
 [role_bastion]
-master-1.10.61.1.11.xip.io
+master-1.10.61.1.11.nip.io
 
 [role_bastion:vars]
 ansible_user=root

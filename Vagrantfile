@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "master-2" do |master|
     master.vm.box = "centos/7"
     master.vm.box_version = "2004.01"
-    master.vm.hostname = "master-2.10.61.1.12.xip.io"
+    master.vm.hostname = "master-2.10.61.1.12.nip.io"
     master.vm.network "private_network", ip: "10.61.1.12"
     master.vm.provision "file", source: "./bastion/kubernetes.repo", destination: "/tmp/kubernetes.repo"
     master.vm.provision "shell", path: "./nodes/config.sh"
@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "worker-#{i}" do |worker|
       worker.vm.box = "centos/7"
       worker.vm.box_version = "2004.01"
-      worker.vm.hostname = "worker-#{i}.10.61.1.2#{i}.xip.io"
+      worker.vm.hostname = "worker-#{i}.10.61.1.2#{i}.nip.io"
       worker.vm.network "private_network", ip: "10.61.1.2#{i}"
       worker.vm.provision "file", source: "./bastion/kubernetes.repo", destination: "/tmp/kubernetes.repo"
       worker.vm.provision "shell", path: "./nodes/config.sh"
@@ -81,7 +81,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "master-1" do |bastion|
       bastion.vm.box = "centos/7"
       bastion.vm.box_version = "2004.01"
-      bastion.vm.hostname = "master-1.10.61.1.11.xip.io"
+      bastion.vm.hostname = "master-1.10.61.1.11.nip.io"
       bastion.vm.network "private_network", ip: "10.61.1.11"
       bastion.vm.provision "file", source: "./bastion/password.txt", destination: "/tmp/password.txt"
       bastion.vm.provision "file", source: "./bastion/hostnames.txt", destination: "/tmp/hostnames.txt"
