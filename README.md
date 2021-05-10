@@ -48,6 +48,7 @@ cd /root/kubespray
 pip3 install -r requirements.txt
 exit
 sudo su -
+cd /root/kubespray
 ansible-playbook -i /root/kubespray/inventory/mycluster/inventory.ini --become --become-user=root cluster.yml
 ```
 Si todo ha ido bien el resultado será parecido a esto:
